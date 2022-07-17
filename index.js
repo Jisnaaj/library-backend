@@ -3,6 +3,7 @@ const app = new express;
 const cors = require("cors");
 const jwt =require("jsonwebtoken");
 const blog=require("./src/model/mongo")
+const PORT = process.env.PORT || 3002;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -103,6 +104,6 @@ app.get('/:id',  (req, res) => {
 
 
 
-app.listen(3002,()=>{
+app.listen(PORT,()=>{
     console.log("server is running");
 });
