@@ -12,6 +12,7 @@ app.use(express.urlencoded({extended:true}));
 
 app.post("/login",(req,res)=>{
     res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Headers: Content-Type, Authorization");
     res.header('Access-Control-Allow-Methods:GET,POST,PATCH,PUT,DELETE,OPTIONS');
 let userdata= {
                email:req.body.eml,
@@ -37,6 +38,7 @@ if(! userdata.password){
 })
 app.get("/book",(req,res)=>{
     res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Headers: Content-Type, Authorization");
     res.header('Access-Control-Allow-Methods:GET,POST,PATCH,PUT,DELETE,OPTIONS');
     blog.find()
     .then(function(book){
@@ -47,6 +49,7 @@ app.get("/book",(req,res)=>{
 
 app.post("/addbook",(req,res)=>{
     res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Headers: Content-Type, Authorization");
     res.header('Access-Control-Allow-Methods:GET,POST,PATCH,PUT,DELETE,OPTIONS');
     console.log(req.body);
 
@@ -63,6 +66,7 @@ app.post("/addbook",(req,res)=>{
 
 app.get('/:id',  (req, res) => {
     res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Headers: Content-Type, Authorization");
     res.header('Access-Control-Allow-Methods:GET,POST,PATCH,PUT,DELETE,OPTIONS'); 
     const id = req.params.id;
       blog.findOne({"_id":id})
@@ -73,6 +77,7 @@ app.get('/:id',  (req, res) => {
 
   app.put('/update',(req,res)=>{
     res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Headers: Content-Type, Authorization");
     res.header('Access-Control-Allow-Methods:GET,POST,PATCH,PUT,DELETE,OPTIONS');
     console.log(req.body)
     id=req.body._id,
