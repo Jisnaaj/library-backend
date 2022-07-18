@@ -8,10 +8,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-email= "any"
-password="any"
+
 
 app.post("/login",(req,res)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    res.header('Access-Control-Allow-Methods:GET,POST,PATCH,PUT,DELETE,OPTIONS');
 let userdata= {
                email:req.body.eml,
                password:req.body.pas
@@ -61,7 +62,8 @@ app.post("/addbook",(req,res)=>{
 })
 
 app.get('/:id',  (req, res) => {
-  
+    res.header("Access-Control-Allow-Origin","*");
+    res.header('Access-Control-Allow-Methods:GET,POST,PATCH,PUT,DELETE,OPTIONS'); 
     const id = req.params.id;
       blog.findOne({"_id":id})
       .then((product)=>{
@@ -70,6 +72,8 @@ app.get('/:id',  (req, res) => {
   })
 
   app.put('/update',(req,res)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    res.header('Access-Control-Allow-Methods:GET,POST,PATCH,PUT,DELETE,OPTIONS');
     console.log(req.body)
     id=req.body._id,
     
@@ -93,7 +97,8 @@ app.get('/:id',  (req, res) => {
  })
 
  app.delete('/remove/:id',(req,res)=>{
-   
+    res.header("Access-Control-Allow-Origin","*");
+    res.header('Access-Control-Allow-Methods:GET,POST,PATCH,PUT,DELETE,OPTIONS'); 
     id = req.params.id;
     blog.findByIdAndDelete({"_id":id})
     .then(()=>{
